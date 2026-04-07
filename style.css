@@ -1,4 +1,4 @@
-/* Reset and body */
+/* reset */
 * {
     margin: 0;
     padding: 0;
@@ -6,73 +6,81 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body, html {
+html, body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: #111;
-    color: #fff;
+    position: relative;
 }
 
-/* Background layer */
+/* animated background */
 #background {
     position: fixed;
     top: 0;
     left: 0;
-    width: 150%;
-    height: 150%;
-    background: linear-gradient(135deg, #8e2de2, #4a00e0, #ff0080, #ff8c00);
-    background-size: 400% 400%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(270deg, #ff0057, #ff7f00, #ffe600, #00ff94, #00d2ff, #6a00ff, #ff00c8);
+    background-size: 1400% 1400%;
     z-index: -1;
-    transition: transform 0.1s ease-out;
-    filter: blur(60px);
+    filter: blur(100px);
+    animation: gradientShift 25s ease infinite;
+    transition: transform 0.1s ease-out, filter 0.2s ease-out;
 }
 
-/* Center container */
+@keyframes gradientShift {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* content box */
 .container {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 70%;
     transform: translate(-50%, -50%);
-    text-align: center;
-    max-width: 600px;
+    max-width: 500px;
     padding: 40px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     border-radius: 20px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    box-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+    text-align: center;
+    backdrop-filter: blur(5px);
+    transition: transform 0.2s ease-out;
 }
 
-/* Title */
+/* title */
 h1 {
-    font-size: 3em;
+    font-size: 2.8em;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, #ff0080, #7928ca);
+    background: linear-gradient(90deg, #ff0080, #7928ca, #00ffd5);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-/* Description */
+/* description */
 p {
     font-size: 1.2em;
     margin-bottom: 30px;
     color: #ddd;
 }
 
-/* Download button */
+/* download button */
 .download-btn {
     display: inline-block;
     padding: 15px 35px;
     font-size: 1.2em;
     color: #fff;
-    background: linear-gradient(90deg, #ff0080, #7928ca);
+    background: linear-gradient(90deg, #ff0080, #7928ca, #00ffd5);
     border: none;
     border-radius: 50px;
     text-decoration: none;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 .download-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
