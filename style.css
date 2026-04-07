@@ -1,78 +1,94 @@
 /* Reset and body */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body, html {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #111;
-    color: #fff;
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+  position: relative;
 }
 
 /* Background layer */
 #background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 150%;
-    height: 150%;
-    background: linear-gradient(135deg, #8e2de2, #4a00e0, #ff0080, #ff8c00);
-    background-size: 400% 400%;
-    z-index: -1;
-    transition: transform 0.1s ease-out;
-    filter: blur(60px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 150%;
+  background: linear-gradient(270deg, #ff0057, #ff7f00, #ffe600, #00ff94, #00d2ff, #6a00ff, #ff00c8);
+  background-size: 1400% 1400%;
+  z-index: -1;
+  filter: blur(80px);
+  transition: transform 0.1s ease-out;
+  animation: vibrantGradient 20s ease infinite;
 }
 
-/* Center container */
+/* Gradient animation */
+@keyframes vibrantGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Container moved to the right with some margin */
 .container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    max-width: 600px;
-    padding: 40px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+  position: absolute;
+  top: 50%;
+  left: 75%;  /* move content toward right side */
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  padding: 40px;
+  background: rgba(0, 0, 0, 0.55);
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+  text-align: left;  /* align text to left for better reading */
 }
 
 /* Title */
 h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    background: linear-gradient(90deg, #ff0080, #7928ca);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  font-size: 3em;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #ff0080, #7928ca);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Description */
 p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-    color: #ddd;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: #ddd;
 }
 
 /* Download button */
 .download-btn {
-    display: inline-block;
-    padding: 15px 35px;
-    font-size: 1.2em;
-    color: #fff;
-    background: linear-gradient(90deg, #ff0080, #7928ca);
-    border: none;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: inline-block;
+  padding: 15px 35px;
+  font-size: 1.2em;
+  color: #fff;
+  background: linear-gradient(90deg, #ff0080, #7928ca);
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .download-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
 }
