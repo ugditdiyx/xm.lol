@@ -24,7 +24,7 @@ document.addEventListener('mousemove', (e) => {
 // === COOL STATUS BOX (Static, top-right, JS-only) ===
 
 // ---- EDIT THIS TEXT TO CHANGE STATUS ----
-const MY_STATUS_TEXT = 'Operational'; // <-- change this to whatever you want
+const MY_STATUS_TEXT = 'Fully UND and Working'; // <-- change this to whatever you want
 // -----------------------------------------
 
 // Create the box
@@ -47,7 +47,7 @@ statusBox.style.cssText = `
 
 // Title
 const statusTitle = document.createElement('h3');
-statusTitle.textContent = 'Service Status';
+statusTitle.textContent = 'Menu Status';
 statusTitle.style.margin = '0 0 10px 0';
 statusTitle.style.textShadow = '0 0 6px #ffffff, 0 0 12px #4b6cb7';
 statusBox.appendChild(statusTitle);
