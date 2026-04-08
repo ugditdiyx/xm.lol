@@ -21,7 +21,7 @@ document.addEventListener('mousemove', (e) => {
     container.style.transform = `translate(calc(-50% + ${containerX}px), calc(-50% + ${containerY}px))`;
 });
 
-// === COOL STATUS BOX (Static, JS-only, editable only in code) ===
+// === COOL STATUS BOX (Static, top-right, JS-only) ===
 
 // ---- EDIT THIS TEXT TO CHANGE STATUS ----
 const MY_STATUS_TEXT = 'Operational'; // <-- change this to whatever you want
@@ -31,15 +31,14 @@ const MY_STATUS_TEXT = 'Operational'; // <-- change this to whatever you want
 const statusBox = document.createElement('div');
 statusBox.style.cssText = `
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 20px;
+  right: 20px;
   background: rgba(255, 255, 255, 0.15);
-  padding: 40px 60px;
-  border-radius: 20px;
+  padding: 25px 40px;
+  border-radius: 15px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5), 0 0 60px rgba(255,255,255,0.2) inset;
-  backdrop-filter: blur(15px) saturate(150%);
+  box-shadow: 0 0 15px rgba(0,0,0,0.4), 0 0 40px rgba(255,255,255,0.2) inset;
+  backdrop-filter: blur(12px) saturate(150%);
   color: #fff;
   font-family: sans-serif;
   z-index: 1000;
@@ -47,23 +46,23 @@ statusBox.style.cssText = `
 `;
 
 // Title
-const statusTitle = document.createElement('h1');
+const statusTitle = document.createElement('h3');
 statusTitle.textContent = 'Service Status';
-statusTitle.style.marginBottom = '20px';
-statusTitle.style.textShadow = '0 0 10px #ffffff, 0 0 20px #4b6cb7';
+statusTitle.style.margin = '0 0 10px 0';
+statusTitle.style.textShadow = '0 0 6px #ffffff, 0 0 12px #4b6cb7';
 statusBox.appendChild(statusTitle);
 
 // Status text
 const statusText = document.createElement('div');
 statusText.textContent = MY_STATUS_TEXT; // only editable in code
 statusText.style.cssText = `
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
-  padding: 15px 30px;
-  border-radius: 15px;
+  padding: 10px 25px;
+  border-radius: 12px;
   background: linear-gradient(135deg, #28a745, #3edc6e);
-  box-shadow: 0 0 15px #28a745, 0 0 30px #3edc6e inset;
-  text-shadow: 0 0 10px #28a745;
+  box-shadow: 0 0 12px #28a745, 0 0 25px #3edc6e inset;
+  text-shadow: 0 0 8px #28a745;
 `;
 statusBox.appendChild(statusText);
 
@@ -75,8 +74,8 @@ const styleSheet = document.createElement("style");
 styleSheet.type = "text/css";
 styleSheet.innerText = `
 @keyframes glowPulse {
-  0% { box-shadow: 0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2) inset; }
-  50% { box-shadow: 0 0 35px rgba(255,255,255,0.6), 0 0 70px rgba(255,255,255,0.3) inset; }
-  100% { box-shadow: 0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2) inset; }
+  0% { box-shadow: 0 0 15px rgba(255,255,255,0.4), 0 0 30px rgba(255,255,255,0.2) inset; }
+  50% { box-shadow: 0 0 25px rgba(255,255,255,0.6), 0 0 50px rgba(255,255,255,0.3) inset; }
+  100% { box-shadow: 0 0 15px rgba(255,255,255,0.4), 0 0 30px rgba(255,255,255,0.2) inset; }
 }`;
 document.head.appendChild(styleSheet);
