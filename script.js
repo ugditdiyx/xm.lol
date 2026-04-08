@@ -21,64 +21,62 @@ document.addEventListener('mousemove', (e) => {
     container.style.transform = `translate(calc(-50% + ${containerX}px), calc(-50% + ${containerY}px))`;
 });
 
-// === STATUS BOX (Single JS) ===
+// === COOL STATUS BOX (Static, JS-only, editable only in code) ===
 
-// Create status box
+// ---- EDIT THIS TEXT TO CHANGE STATUS ----
+const MY_STATUS_TEXT = 'Operational'; // <-- change this to whatever you want
+// -----------------------------------------
+
+// Create the box
 const statusBox = document.createElement('div');
 statusBox.style.cssText = `
   position: fixed;
-  top: 20px;
-  right: 20px;
-  background: rgba(255,255,255,0.95);
-  padding: 20px 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-  font-family: sans-serif;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.15);
+  padding: 40px 60px;
+  border-radius: 20px;
   text-align: center;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5), 0 0 60px rgba(255,255,255,0.2) inset;
+  backdrop-filter: blur(15px) saturate(150%);
+  color: #fff;
+  font-family: sans-serif;
   z-index: 1000;
+  animation: glowPulse 2.5s infinite alternate;
 `;
 
 // Title
-const statusTitle = document.createElement('h3');
+const statusTitle = document.createElement('h1');
 statusTitle.textContent = 'Service Status';
-statusTitle.style.margin = '0 0 10px 0';
+statusTitle.style.marginBottom = '20px';
+statusTitle.style.textShadow = '0 0 10px #ffffff, 0 0 20px #4b6cb7';
 statusBox.appendChild(statusTitle);
 
 // Status text
 const statusText = document.createElement('div');
-statusText.textContent = 'Operational';
+statusText.textContent = MY_STATUS_TEXT; // only editable in code
 statusText.style.cssText = `
-  color: white;
-  background: #28a745;
-  padding: 8px 16px;
-  border-radius: 8px;
+  font-size: 20px;
   font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #28a745, #3edc6e);
+  box-shadow: 0 0 15px #28a745, 0 0 30px #3edc6e inset;
+  text-shadow: 0 0 10px #28a745;
 `;
 statusBox.appendChild(statusText);
 
-// Optional: button to toggle status
-const toggleBtn = document.createElement('button');
-toggleBtn.textContent = 'Toggle Status';
-toggleBtn.style.cssText = `
-  margin-top: 12px;
-  padding: 8px 14px;
-  border:none;
-  border-radius: 8px;
-  font-weight:bold;
-  cursor:pointer;
-  background:#4b6cb7;
-  color:white;
-`;
-toggleBtn.onclick = () => {
-  if (statusText.textContent === 'Operational') {
-    statusText.textContent = 'Down';
-    statusText.style.background = '#dc3545';
-  } else {
-    statusText.textContent = 'Operational';
-    statusText.style.background = '#28a745';
-  }
-};
-statusBox.appendChild(toggleBtn);
-
-// Add to body
+// Append to body
 document.body.appendChild(statusBox);
+
+// Glow pulse animation
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = `
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2) inset; }
+  50% { box-shadow: 0 0 35px rgba(255,255,255,0.6), 0 0 70px rgba(255,255,255,0.3) inset; }
+  100% { box-shadow: 0 0 20px rgba(255,255,255,0.4), 0 0 40px rgba(255,255,255,0.2) inset; }
+}`;
+document.head.appendChild(styleSheet);
